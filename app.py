@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template_string
+from flask import Flask, jsonify, render_template
 from status_store import status_data
 
 app = Flask(__name__)
@@ -14,4 +14,4 @@ def status_api():
 @app.route("/dashboard")
 def dashboard():
     data = list(status_data.values())
-    return render_template_string('dashboard.html', data=data)
+    return render_template('dashboard.html', data=data)
