@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Service Uptime Dashboard</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f5f5f5;
+            padding: 30px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background: white;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th {
+            background: #222;
+            color: white;
+        }
+
+        .ok {
+            background: #c8f7c5;
+        }
+
+        .fail {
+            background: #f7c5c5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🔍 Service Uptime Dashboard</h1>
+
+    <table>
+        <tr>
+            <th>URL</th>
+            <th>Status</th>
+            <th>HTTP Code</th>
+            <th>Last Success</th>
+            <th>Last Error</th>
+            <th>Success Count</th>
+            <th>Error Count</th>
+            <th>Last Checked</th>
+        </tr>
+
+        {% for item in data %}
+        <tr class="{{ 'ok' if item.status == 'UP' else 'fail' }}">
+            <td>{{ item.url }}</td>
+            <td>{{ item.status }}</td>
+            <td>{{ item.code }}</td>
+            <td>{{ item.last_success }}</td>
+            <td>{{ item.last_error }}</td>
+            <td>{{ item.success_count }}</td>
+            <td>{{ item.error_count }}</td>
+            <td>{{ item.last_checked }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+
+</html>
