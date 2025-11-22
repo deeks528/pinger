@@ -1,8 +1,6 @@
-URLS = [
-    "https://code-bot-lwjd.onrender.com/",
-    "https://niepid-b0t2.onrender.com/"
-]
+import os
 
+URLS = [u.strip() for u in os.getenv("URLS", "").split(",") if u.strip()]
 INTERVAL = 300  # seconds
 
 HEADERS = {
